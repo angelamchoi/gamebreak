@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Systems List</h1>
+
+{% for system in systems %}
+    <div class="card">
+    <div class="card-content">
+        <p>Name: {{ system.name }}</p>
+        <p>Release Year: {{ system.date }}</p>
+        <p>Platform: {{ system.platform }}</p>
+        <p># of Players: {{ system.people }}</p>
+    </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -18,6 +18,12 @@ MODES =(
     ('B', 'Battle Royale')
 )
 
+PLAYERS = (
+    ('1', 'One'),
+    ('2', 'Two'),
+    ('3', 'Three'),
+    ('4+', 'Four')
+)
 
 # Game model
 class Game(models.Model):
@@ -36,3 +42,16 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+#Systems model
+class System(models.Model):
+    name = models.CharField(max_length =250)
+    date = models.IntegerField()
+    platform = models.CharField(max_length=250)
+    people = models.IntegerField(
+        choices=PLAYERS,
+        default=PLAYERS[0][0]
+    )
+    
+    def __str__(self):
+        return self.name

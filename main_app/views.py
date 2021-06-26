@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Game
+from .models import Game, System
 
 # SIGN IN/UP
 def home(request):
@@ -25,3 +25,7 @@ def signup(request):
 def games_index(request):
     games = Game.objects.all()
     return render(request, 'games/index.html', { 'games': games })
+
+def systems_index(request):
+    systems = System.objects.all()
+    return render(request, 'systems/index.html', { 'systems': systems })
