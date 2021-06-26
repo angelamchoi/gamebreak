@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -39,7 +37,6 @@ class System(models.Model):
         default=PLAYERS[0][0]
     )
     gaming_platform = models.CharField(max_length=250)
->>>>>>> 5476ed33afb0b9b822cb76f2f415669ec5e4980d
 
 # Game model
 class Game(models.Model):
