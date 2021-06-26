@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Games List</h1>
+
+{% for game in games %}
+    <div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ game.name }}</span>
+        <p>Title: {{ game.title }}</p>
+        <p>Release Year: {{ game.date }}</p>
+        <p>Genre: {{ game.genre }}</p>
+        <p>Mode: {{ game.mode }}</p>
+    </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

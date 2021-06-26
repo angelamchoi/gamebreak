@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Game
 
-# Define the home view
+# SIGN IN/UP
 def home(request):
     return render(request, 'home.html')
 
@@ -20,3 +20,8 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+def games_index(request):
+    games = Game.objects.all()
+    return render(request, 'games/index.html', { 'games': games })

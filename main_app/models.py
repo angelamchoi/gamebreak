@@ -32,4 +32,7 @@ class Game(models.Model):
         max_length=1,
         choices=MODES,
         default=MODES[0][0]
-)
+    )
+
+    def __str__(self):
+        return self.title
