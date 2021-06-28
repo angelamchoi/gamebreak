@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 #CONSTANTS
 GENRES=(
@@ -43,15 +44,21 @@ class Game(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):        
+        return reverse('games_detail', kwargs={'pk': self.id})
+
 #Systems model
 class System(models.Model):
     name = models.CharField(max_length =250)
     date = models.IntegerField()
     platform = models.CharField(max_length=250)
     people = models.IntegerField(
-        choices=PLAYERS,
-        default=PLAYERS[0][0]
+        # choices=PLAYERS,
+        # default=PLAYERS[0][1]
     )
     
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):        
+        return reverse('systems_detail', kwargs={'pk': self.id})
