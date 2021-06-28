@@ -22,23 +22,12 @@
             <li><a href="/" class="left brand-logo">&nbsp;&nbsp;gamebreak</a></li>
         </ul>
         <ul class="right">
-            <!--About-->
-            {% comment %} <li><a href="{% url 'about' %}">About</a></li>
-            {% if user.is_authenticated %}
-            <!--Add a toy-->
-            <li><a href="{% url 'toys_create' %}">Add a gaming system</a></li>
-            <!--View all toys-->
-            <li><a href="{% url 'toys_index' %}">View all Games systems</a></li>
-            <!--Add a pokemon-->
-            <li><a href="{% url 'pokemons_create' %}">Add a Store</a></li>
-            <!--View all pokemons-->
-            <li><a href="{% url 'index' %}">View All my Games </a></li>
-            <!--Logout-->
-            <li><a href="{% url 'logout' %}">Log Out</a></li> {% endcomment %}
-            {% comment %} {% else %} {% endcomment %}
+            <li><a href="{% url 'games_create' %}">Add a Game</a></li>
+            <li><a href="/games">View All My Games</a></li>
+            <li><a href="/systems">View All My Systems</a></li>
+            <li><a href="{% url 'systems_create' %}">Add a System</a></li>
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="{% url 'login' %}">Log In</a></li>
-            {% comment %} {% endif %} {% endcomment %}
         </ul>
         </div>
     </nav>
