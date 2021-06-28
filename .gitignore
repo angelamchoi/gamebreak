@@ -20,7 +20,8 @@ Temporary Items
 .apdisk
 ### Python ###
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__/
+**/migrations/
 *.py[cod]
 # C extensions
 *.so
@@ -69,3 +70,4 @@ target/
 __pycache__/
 local_settings.py
 .env
+

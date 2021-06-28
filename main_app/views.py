@@ -39,6 +39,7 @@ class GameDetail(DetailView):
     model = Game
 
 def games_detail(request, game_id):
+    print("Hello")
     game = Game.objects.get(id=game_id)
     return render(request, 'games/detail.html', { 'game': game })
 
