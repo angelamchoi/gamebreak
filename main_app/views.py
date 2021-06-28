@@ -5,10 +5,8 @@ from .models import Game, System
 # from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
-# SIGN IN/UP
-def home(request):
-    return render(request, 'home.html')
 
+# SIGN IN/UP
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -72,6 +70,11 @@ class SystemDelete(DeleteView):
     success_url = '/systems/'
 
 
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
 
 def games_index(request):
     games = Game.objects.all()
