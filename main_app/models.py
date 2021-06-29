@@ -47,7 +47,7 @@ class Game(models.Model):
     def get_absolute_url(self):        
         return reverse('games_detail', kwargs={'pk': self.id})
 
-#Systems model
+# Systems model
 class System(models.Model):
     name = models.CharField(max_length =250)
     date = models.IntegerField()
@@ -62,3 +62,15 @@ class System(models.Model):
 
     def get_absolute_url(self):        
         return reverse('systems_detail', kwargs={'pk': self.id})
+
+# Store model
+class Store(models.Model):
+    store = models.CharField(max_length =250) 
+    location = models.CharField(max_length =250) 
+    url = models.CharField(max_length=2500)
+
+    def __str__(self):
+        return self.store
+
+    def get_absolute_url(self):        
+        return reverse('stores_detail', kwargs={'pk': self.id})
