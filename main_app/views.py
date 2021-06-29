@@ -95,3 +95,8 @@ def stores_detail(request, store_id):
 
 class StoreDetail(DetailView):
     model = Store
+
+class StoreCreate(CreateView):
+    model = Store
+    fields = '__all__'
+    success_url = '/stores/'
