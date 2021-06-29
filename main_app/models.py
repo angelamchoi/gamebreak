@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 #CONSTANTS
+PLAYERS = (
+    ('1', 'One'),
+    ('2', 'Two'),
+    ('3', 'Three'),
+    ('4+', 'Four')
+)
+
 GENRES=(
     ('A', 'Adventure'),
     ('F', 'Fighting'),
@@ -19,12 +26,21 @@ MODES =(
     ('B', 'Battle Royale')
 )
 
-PLAYERS = (
-    ('1', 'One'),
-    ('2', 'Two'),
-    ('3', 'Three'),
-    ('4+', 'Four')
-)
+# Systems model
+class System(models.Model):
+    name = models.CharField(max_length =250)
+    date = models.IntegerField()
+    platform = models.CharField(max_length=250)
+    people = models.IntegerField(
+        # choices=PLAYERS,
+        # default=PLAYERS[0][1]
+    )
+    
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):        
+        return reverse('systems_detail', kwargs={'pk': self.id})
 
 # Game model
 class Game(models.Model):
@@ -41,27 +57,13 @@ class Game(models.Model):
         default=MODES[0][0]
     )
 
+    system = models.ForeignKey(System, default='1', on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):        
         return reverse('games_detail', kwargs={'pk': self.id})
-
-# Systems model
-class System(models.Model):
-    name = models.CharField(max_length =250)
-    date = models.IntegerField()
-    platform = models.CharField(max_length=250)
-    people = models.IntegerField(
-        # choices=PLAYERS,
-        # default=PLAYERS[0][1]
-    )
-    
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):        
-        return reverse('systems_detail', kwargs={'pk': self.id})
 
 # Store model
 class Store(models.Model):
