@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Store List</h1>
 {% for store in stores %}
-    <a href="{% url 'detail' store.id %}">
+    <a href="/stores/{{ store.id }}">
         <div class="card">
         <div class="card-content">
             <p>Store Name: {{ store.store }}</p>

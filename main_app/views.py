@@ -21,10 +21,25 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def games_index(request):
+    games = Game.objects.all()
+    return render(request, 'games/index.html', { 'games': games })
+
+def systems_index(request):
+    systems = System.objects.all()
+    return render(request, 'systems/index.html', { 'systems': systems })
+
+def stores_index(request):
+    store = Store.objects.all()
+    return render(request, 'store/index.html', { 'store': store })
 
 #Class Based Views
-
-
 #GAMES
 class GameCreate(CreateView):
     model = Game
@@ -70,29 +85,7 @@ class SystemDelete(DeleteView):
     success_url = '/systems/'
 
 
-def home(request):
-    return render(request, 'home.html')
-
-def about(request):
-    return render(request, 'about.html')
-
-def games_index(request):
-    games = Game.objects.all()
-    return render(request, 'games/index.html', { 'games': games })
-
-def systems_index(request):
-    systems = System.objects.all()
-    return render(request, 'systems/index.html', { 'systems': systems })
-
-def stores_index(request):
-    store = Store.objects.all()
-    return render(request, 'store/index.html', { 'store': store })
-
-def stores_detail(request, store_id):
-    store = Store.objects.get(id=store_id)
-    return render(request, 'store/detail.html', { 'store': store })
-
-
+# Store
 class StoreDetail(DetailView):
     model = Store
 
@@ -100,3 +93,11 @@ class StoreCreate(CreateView):
     model = Store
     fields = '__all__'
     success_url = '/stores/'
+
+class StoreUpdate(UpdateView):
+    model = Store
+    fields = '__all__'
+
+def stores_detail(request, store_id):
+    store = Store.objects.get(id=store_id)
+    return render(request, 'store/detail.html', { 'store': store })
