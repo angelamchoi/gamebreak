@@ -6,6 +6,8 @@ from .models import Game, System, Store
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
 
+
+
 # SIGN IN/UP
 def signup(request):
     error_message = ''
@@ -55,7 +57,8 @@ class GameDetail(DetailView):
 
 def games_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    return render(request, 'games/detail.html', { 'game': game })
+    return render(request, 'games/detail.html', {'game': game,})
+
 
 class GameDelete(DeleteView):
     model = Game
