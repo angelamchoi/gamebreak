@@ -63,7 +63,11 @@ class Store(models.Model):
 class Game(models.Model):
     title = models.CharField(max_length=100)
     date = models.IntegerField()
-    genre = models.CharField(max_length=100)
+    genre = models.CharField(
+        max_length=1,
+            choices=GENRES,
+            default=GENRES[0][0]
+    )
     mode = models.CharField(
         max_length=1,
             choices=MODES,
@@ -77,6 +81,7 @@ class Game(models.Model):
     #     return self.title
     def __str__(self):
         return f"{self.get_mode_display()}"
+        
 
 
     def get_absolute_url(self):        

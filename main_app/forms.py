@@ -10,4 +10,4 @@ class SystemForm(ModelForm):
 class GameForm(ModelForm):
     class Meta:
         model = Game
-        fields = ['mode']
+        fields = ['mode', 'genre']
