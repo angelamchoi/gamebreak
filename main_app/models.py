@@ -35,13 +35,12 @@ PLATFORMS =(
 
 # Systems model
 class System(models.Model):
-    name = models.CharField(max_length =250)
-    date = models.IntegerField()
-    platform = models.CharField(
+    platform = models.CharField('gaming system',
         max_length=1,
             choices=PLATFORMS,
             default=PLATFORMS[0][1]
     )
+    date = models.IntegerField('version')
 
     # def __str__(self):
     #     return self.name
@@ -62,7 +61,7 @@ class Store(models.Model):
 # Game model
 class Game(models.Model):
     title = models.CharField(max_length=100)
-    date = models.IntegerField()
+    date = models.IntegerField('release year')
     genre = models.CharField(
         max_length=1,
             choices=GENRES,
