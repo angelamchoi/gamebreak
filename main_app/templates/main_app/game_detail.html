@@ -41,16 +41,20 @@
         {% for store in game.stores.all %}
         <div class="card">
             <div class="card-content">
-            {% comment %} <span class="card-title">
-                A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
-            </span> {% endcomment %}
+                <h3> {{ store.store }} </h3>
+        </div>
+<!-- Remove a Store -->
+            <div class="card-action">
+                <form action="{% url 'unassoc_store' game.id store.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Remove</button>
+                </form>
             </div>
         </div>
         {% endfor %}
     {% else %}
         <h5>No Stores :(</h5>
     {% endif %}
-    </div>
 </div>
 <!--Available Stores-->
     <div class="col s6">
@@ -59,9 +63,7 @@
         {% for store in stores.all %}
         <div class="card">
             <div class="card-content">
-            {% comment %} <span class="card-title"> {% endcomment %}
-                {% comment %} A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
-            </span> {% endcomment %}
+                <h3> {{ store.store }} </h3>
             </div>
             <div class="card-action">
             <form action="{% url 'assoc_store' game.id store.id %}" method="post">
@@ -75,5 +77,6 @@
         <h5>{{game.title}} Already Has All Stores Available</h5>
     {% endif %}
     </div>
+</div>
 
 {% endblock %}

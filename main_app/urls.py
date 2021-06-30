@@ -22,6 +22,7 @@ urlpatterns = [
 
     path('stores/<int:pk>/update/', views.StoreUpdate.as_view(), name='stores_update'),
     path('games/<int:game_id>/assoc_store/<int:store_id>/', views.assoc_store, name='assoc_store'),
+    path('games/<int:game_id>/unassoc_store/<int:store_id>/', views.unassoc_store, name='unassoc_store'),
 
     path('games/<int:game_id>/add_photo/', views.add_photo, name='add_photo'),
 

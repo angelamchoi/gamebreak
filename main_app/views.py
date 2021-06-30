@@ -119,6 +119,11 @@ def assoc_store(request, game_id, store_id):
     return redirect('game_detail', game_id=game_id)
 
 @login_required
+def unassoc_store(request, game_id, store_id):
+    Game.objects.get(id=game_id).stores.remove(store_id)
+    return redirect('game_detail', game_id=game_id)
+
+@login_required
 def add_photo(request, game_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
