@@ -63,22 +63,21 @@ class Store(models.Model):
 class Game(models.Model):
     title = models.CharField(max_length=100)
     date = models.IntegerField()
-    genre = models.CharField(max_length=100
-        # max_length=1,
-        # choices=GENRES,
-        # default=GENRES[0][0]
-    )
+    genre = models.CharField(max_length=100)
     mode = models.CharField(
-        # max_length=1,
-        # choices=MODES,
-        # default=MODES[0][0]
-    max_length=100)
+        max_length=1,
+            choices=MODES,
+            default=MODES[0][0]
+    )
     system = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
     # stores = models.ManyToManyField(Store, default="gamestop")
     
 
+    # def __str__(self):
+    #     return self.title
     def __str__(self):
-        return self.title
+        return f"{self.get_mode_display()}"
+
 
     def get_absolute_url(self):        
         return reverse('games_detail', kwargs={'pk': self.id})
