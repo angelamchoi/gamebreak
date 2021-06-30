@@ -6,8 +6,6 @@ from .models import Game, System, Store
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
 
-
-
 # SIGN IN/UP
 def signup(request):
     error_message = ''
@@ -63,7 +61,6 @@ def games_detail(request, game_id):
     'stores': stores_game_doesnt_have
 })
 
-
 class GameDelete(DeleteView):
     model = Game
     success_url = '/games/'
@@ -82,7 +79,6 @@ class SystemUpdate(UpdateView):
 class SystemDetail(DetailView):
     model = System
 
-
 def systems_detail(request, system_id):
     system = System.objects.get(id=system_id)
     return render(request, 'systems/detail.html', { 'system': system })
@@ -90,7 +86,6 @@ def systems_detail(request, system_id):
 class SystemDelete(DeleteView):
     model = System
     success_url = '/systems/'
-
 
 # Store
 class StoreCreate(CreateView):
@@ -101,7 +96,6 @@ class StoreCreate(CreateView):
 class StoreUpdate(UpdateView):
     model = Store
     fields = '__all__'
-
 
 def assoc_store(request, game_id, store_id):
     Game.objects.get(id=game_id).stores.add(store_id)
