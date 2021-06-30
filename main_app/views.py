@@ -38,8 +38,8 @@ def systems_index(request):
     return render(request, 'systems/index.html', { 'systems': systems })
 
 def stores_index(request):
-    store = Store.objects.all()
-    return render(request, 'store/index.html', { 'store': store })
+    stores = Store.objects.all()
+    return render(request, 'store/index.html', { 'stores': stores })
 
 #Class Based Views
 #GAMES

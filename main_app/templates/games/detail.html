@@ -52,7 +52,7 @@
             </span>
             </div>
             <div class="card-action">
-            <form action="{% url 'assoc_toy' game.id store.id %}" method="post">
+            <form action="{% url 'assoc_store' game.id store.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn">Add</button>
             </form>
@@ -60,7 +60,7 @@
         </div>
         {% endfor %}
     {% else %}
-        <h5>{{game.name}} Already Has All Stores Available</h5>
+        <h5>{{game.title}} Already Has All Stores Available</h5>
     {% endif %}
     </div>
 
