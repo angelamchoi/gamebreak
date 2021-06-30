@@ -45,14 +45,10 @@ class System(models.Model):
 # Store model
 class Store(models.Model):
     store = models.CharField(max_length =250) 
-
     system = models.ForeignKey(System, default='1', on_delete=models.CASCADE)
     
     def __str__(self):
         return self.store
-
-    def get_absolute_url(self):        
-        return reverse('stores_detail', kwargs={'pk': self.id})
 
 # Game model
 class Game(models.Model):
@@ -68,7 +64,7 @@ class Game(models.Model):
         # choices=MODES,
         # default=MODES[0][0]
     max_length=100)
-    System = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
+    system = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
     stores = models.ManyToManyField(Store, default="gamestop")
 
     def __str__(self):
