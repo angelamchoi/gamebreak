@@ -19,7 +19,19 @@
         </div>
     </div>
 </div>
-
+<!--Photo-->
+    {% for photo in game.photo_set.all %}
+        <img class="responsive-img card-panel" src="{{photo.url}}">
+    {% empty %}
+        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+    <form action="{% url 'add_photo' game.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <br><br>
+        <input type="submit" class="btn" value="Upload Photo">
+    </form>
+</div>
 <!--store-->
 <hr>
 <div class="row">
@@ -29,9 +41,9 @@
         {% for store in game.stores.all %}
         <div class="card">
             <div class="card-content">
-            <span class="card-title">
+            {% comment %} <span class="card-title">
                 A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
-            </span>
+            </span> {% endcomment %}
             </div>
         </div>
         {% endfor %}
@@ -47,9 +59,9 @@
         {% for store in stores.all %}
         <div class="card">
             <div class="card-content">
-            <span class="card-title">
-                A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
-            </span>
+            {% comment %} <span class="card-title"> {% endcomment %}
+                {% comment %} A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
+            </span> {% endcomment %}
             </div>
             <div class="card-action">
             <form action="{% url 'assoc_store' game.id store.id %}" method="post">

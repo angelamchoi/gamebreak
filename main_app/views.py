@@ -1,10 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Game, System, Store
 # from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
+
+# AWS
+import uuid 
+import boto3
+
+from .models import Game, System, Store, Photo
+
+# Constant variables 
+S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
+BUCKET = 'gamebreak'
 
 # SIGN IN/UP
 def signup(request):
@@ -55,10 +64,10 @@ class GameDetail(DetailView):
 
 def games_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    stores_game_doesnt_have = Store.objects.exclude(id__in = game.stores.all().values_list('id'))
-    return render(request, 'games/detail.html', {
-    'game': game, 
-    'stores': stores_game_doesnt_have
+    stores_game_doesnt_have = Store.objects.exclude(
+        id__in = game.stores.all().values_list('id'))
+    return render(request, 'game_detail.html', {
+        'game': game, 'stores': stores_game_doesnt_have
 })
 
 class GameDelete(DeleteView):
@@ -99,4 +108,18 @@ class StoreUpdate(UpdateView):
 
 def assoc_store(request, game_id, store_id):
     Game.objects.get(id=game_id).stores.add(store_id)
-    return redirect('games/detail', game_id=game_id)
+    return redirect('game_detail', game_id=game_id)
+
+def add_photo(request, game_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, game_id=game_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('game_detail', game_id=game_id)
