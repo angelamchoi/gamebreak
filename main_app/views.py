@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Game, System
+from .models import Game, System, Store
 # from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
+
+
 
 # SIGN IN/UP
 def signup(request):
@@ -21,10 +23,25 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def games_index(request):
+    games = Game.objects.all()
+    return render(request, 'games/index.html', { 'games': games })
+
+def systems_index(request):
+    systems = System.objects.all()
+    return render(request, 'systems/index.html', { 'systems': systems })
+
+def stores_index(request):
+    stores = Store.objects.all()
+    return render(request, 'store/index.html', { 'stores': stores })
 
 #Class Based Views
-
-
 #GAMES
 class GameCreate(CreateView):
     model = Game
@@ -39,9 +56,13 @@ class GameDetail(DetailView):
     model = Game
 
 def games_detail(request, game_id):
-    print("Hello")
     game = Game.objects.get(id=game_id)
-    return render(request, 'games/detail.html', { 'game': game })
+    stores_game_doesnt_have = Store.objects.exclude(id__in = game.stores.all().values_list('id'))
+    return render(request, 'games/detail.html', {
+    'game': game, 
+    'stores': stores_game_doesnt_have
+})
+
 
 class GameDelete(DeleteView):
     model = Game
@@ -71,16 +92,17 @@ class SystemDelete(DeleteView):
     success_url = '/systems/'
 
 
-def home(request):
-    return render(request, 'home.html')
+# Store
+class StoreCreate(CreateView):
+    model = Store
+    fields = '__all__'
+    success_url = '/stores/'
 
-def about(request):
-    return render(request, 'about.html')
+class StoreUpdate(UpdateView):
+    model = Store
+    fields = '__all__'
 
-def games_index(request):
-    games = Game.objects.all()
-    return render(request, 'games/index.html', { 'games': games })
 
-def systems_index(request):
-    systems = System.objects.all()
-    return render(request, 'systems/index.html', { 'systems': systems })
+def assoc_store(request, game_id, store_id):
+    Game.objects.get(id=game_id).stores.add(store_id)
+    return redirect('games/detail', game_id=game_id)

@@ -20,4 +20,48 @@
     </div>
 </div>
 
+<!--store-->
+<hr>
+<div class="row">
+    <div class="col s6">
+    <h3>{{ game.title }}'s Store</h3>
+    {% if game.stores.count %}
+        {% for store in game.stores.all %}
+        <div class="card">
+            <div class="card-content">
+            <span class="card-title">
+                A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
+            </span>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h5>No Stores :(</h5>
+    {% endif %}
+    </div>
+</div>
+<!--Available Stores-->
+    <div class="col s6">
+    <h3>Available Stores</h3>
+    {% if stores.count %}
+        {% for store in stores.all %}
+        <div class="card">
+            <div class="card-content">
+            <span class="card-title">
+                A <span style="color: {{ store.color }}">{{ store.color }}</span> {{ store.store }}
+            </span>
+            </div>
+            <div class="card-action">
+            <form action="{% url 'assoc_store' game.id store.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add</button>
+            </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h5>{{game.title}} Already Has All Stores Available</h5>
+    {% endif %}
+    </div>
+
 {% endblock %}

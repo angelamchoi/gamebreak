@@ -26,28 +26,17 @@ PLAYERS = (
     ('4+', 'Four')
 )
 
-# Game model
-class Game(models.Model):
-    title = models.CharField(max_length=100)
-    date = models.IntegerField()
-    genre = models.CharField(
-        max_length=1,
-        choices=GENRES,
-        default=GENRES[0][0]
-    )
-    mode = models.CharField(
-        max_length=1,
-        choices=MODES,
-        default=MODES[0][0]
-    )
+# Store model
+class Store(models.Model):
+    store = models.CharField(max_length =250) 
 
     def __str__(self):
-        return self.title
+        return self.store
 
     def get_absolute_url(self):        
-        return reverse('games_detail', kwargs={'pk': self.id})
+        return reverse('stores_detail', kwargs={'pk': self.id})
 
-#Systems model
+# Systems model
 class System(models.Model):
     name = models.CharField(max_length =250)
     date = models.IntegerField()
@@ -62,3 +51,27 @@ class System(models.Model):
 
     def get_absolute_url(self):        
         return reverse('systems_detail', kwargs={'pk': self.id})
+
+# Game model
+class Game(models.Model):
+    title = models.CharField(max_length=100)
+    date = models.IntegerField()
+    genre = models.CharField(
+        max_length=1,
+        choices=GENRES,
+        default=GENRES[0][0]
+    )
+    mode = models.CharField(
+        max_length=1,
+        choices=MODES,
+        default=MODES[0][0]
+    )
+    System = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
+    stores = models.ManyToManyField(Store, default="gamestop")
+
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):        
+        return reverse('games_detail', kwargs={'pk': self.id})
