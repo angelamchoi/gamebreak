@@ -70,8 +70,7 @@ class GameDetail(LoginRequiredMixin, DetailView):
 @login_required
 def games_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    stores_game_doesnt_have = Store.objects.exclude(
-        id__in = game.stores.all().values_list('id'))
+    stores_game_doesnt_have = Store.objects.exclude(id__in=game.stores.all().values_list('id'))
     return render(request, 'game_detail.html', {
         'game': game, 'stores': stores_game_doesnt_have
 })
@@ -103,7 +102,7 @@ class SystemDelete(LoginRequiredMixin, DeleteView):
     model = System
     success_url = '/systems/'
 
-# Store
+# STORE
 class StoreCreate(LoginRequiredMixin, CreateView):
     model = Store
     fields = '__all__'
@@ -123,6 +122,7 @@ def unassoc_store(request, game_id, store_id):
     Game.objects.get(id=game_id).stores.remove(store_id)
     return redirect('game_detail', game_id=game_id)
 
+# PHOTO
 @login_required
 def add_photo(request, game_id):
     photo_file = request.FILES.get('photo-file', None)

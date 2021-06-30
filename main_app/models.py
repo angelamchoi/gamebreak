@@ -66,6 +66,7 @@ class Game(models.Model):
     max_length=100)
     system = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
     stores = models.ManyToManyField(Store, default="gamestop")
+    
 
     def __str__(self):
         return self.title
