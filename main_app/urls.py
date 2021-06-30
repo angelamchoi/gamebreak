@@ -20,9 +20,7 @@ urlpatterns = [
     path('systems/<int:pk>/delete/', views.SystemDelete.as_view(), name='systems_delete'),
     path('systems/<int:pk>/', views.SystemDetail.as_view(), name='systems_detail'),
 
-    path('stores/<int:store_id>/', views.stores_detail, name='stores_detail'),
-    path('stores/<int:pk>/', views.StoreDetail.as_view(), name='stores_detail'),
     path('stores/<int:pk>/update/', views.StoreUpdate.as_view(), name='stores_update'),
-
+    path('games/<int:game_id>/assoc_store/<int:store_id>/', views.assoc_store, name='assoc_store'),
 
 ]

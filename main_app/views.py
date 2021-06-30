@@ -57,7 +57,11 @@ class GameDetail(DetailView):
 
 def games_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    return render(request, 'games/detail.html', {'game': game,})
+    stores_game_doesnt_have = Store.objects.exclude(id__in = game.stores.all().values_list('id'))
+    return render(request, 'games/detail.html', {
+    'game': game, 
+    'stores': stores_game_doesnt_have
+})
 
 
 class GameDelete(DeleteView):
@@ -89,9 +93,6 @@ class SystemDelete(DeleteView):
 
 
 # Store
-class StoreDetail(DetailView):
-    model = Store
-
 class StoreCreate(CreateView):
     model = Store
     fields = '__all__'
@@ -101,6 +102,7 @@ class StoreUpdate(UpdateView):
     model = Store
     fields = '__all__'
 
-def stores_detail(request, store_id):
-    store = Store.objects.get(id=store_id)
-    return render(request, 'store/detail.html', { 'store': store })
+
+def assoc_store(request, game_id, store_id):
+    Game.objects.get(id=game_id).stores.add(store_id)
+    return redirect('games/detail', game_id=game_id)

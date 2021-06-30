@@ -26,6 +26,16 @@ PLAYERS = (
     ('4+', 'Four')
 )
 
+# Store model
+class Store(models.Model):
+    store = models.CharField(max_length =250) 
+
+    def __str__(self):
+        return self.store
+
+    def get_absolute_url(self):        
+        return reverse('stores_detail', kwargs={'pk': self.id})
+
 # Systems model
 class System(models.Model):
     name = models.CharField(max_length =250)
@@ -57,6 +67,7 @@ class Game(models.Model):
         default=MODES[0][0]
     )
     System = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
+    stores = models.ManyToManyField(Store, default="gamestop")
 
 
     def __str__(self):
@@ -64,15 +75,3 @@ class Game(models.Model):
 
     def get_absolute_url(self):        
         return reverse('games_detail', kwargs={'pk': self.id})
-
-# Store model
-class Store(models.Model):
-    store = models.CharField(max_length =250) 
-    location = models.CharField(max_length =250) 
-    url = models.CharField(max_length=2500)
-
-    def __str__(self):
-        return self.store
-
-    def get_absolute_url(self):        
-        return reverse('stores_detail', kwargs={'pk': self.id})
