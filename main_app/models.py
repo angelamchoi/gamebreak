@@ -26,18 +26,27 @@ MODES =(
     ('B', 'Battle Royale')
 )
 
+PLATFORMS =(
+    ('N', 'Nintendo'),
+    ('X', 'Xbox'),
+    ('P', 'PlayStation'),
+    ('S', 'Steam')
+)
+
 # Systems model
 class System(models.Model):
     name = models.CharField(max_length =250)
     date = models.IntegerField()
-    platform = models.CharField(max_length=250)
-    people = models.IntegerField(
-        # choices=PLAYERS,
-        # default=PLAYERS[0][1]
+    platform = models.CharField(
+        max_length=1,
+            choices=PLATFORMS,
+            default=PLATFORMS[0][1]
     )
-    
+
+    # def __str__(self):
+    #     return self.name
     def __str__(self):
-        return self.name
+        return f"{self.get_platform_display()}"
 
     def get_absolute_url(self):        
         return reverse('systems_detail', kwargs={'pk': self.id})
@@ -65,7 +74,7 @@ class Game(models.Model):
         # default=MODES[0][0]
     max_length=100)
     system = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
-    stores = models.ManyToManyField(Store, default="gamestop")
+    # stores = models.ManyToManyField(Store, default="gamestop")
     
 
     def __str__(self):

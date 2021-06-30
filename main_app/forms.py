@@ -1,8 +1,8 @@
 
 from django.forms import ModelForm
-from .models import Game
+from .models import System
 
-class GameForm(ModelForm):
+class SystemForm(ModelForm):
     class Meta:
-        model = Game
-        fields = ['title', 'genre']
+        model = System
+        fields = ['platform']

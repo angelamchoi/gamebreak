@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
+from .forms import SystemForm
 
 # AWS
 import uuid 
@@ -70,6 +71,7 @@ class GameDetail(LoginRequiredMixin, DetailView):
 @login_required
 def games_detail(request, game_id):
     game = Game.objects.get(id=game_id)
+    system_form = SystemForm()
     stores_game_doesnt_have = Store.objects.exclude(id__in=game.stores.all().values_list('id'))
     return render(request, 'game_detail.html', {
         'game': game, 'stores': stores_game_doesnt_have
