@@ -73,9 +73,7 @@ class Game(models.Model):
             default=MODES[0][0]
     )
     system = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
-    # stores = models.ManyToManyField(Store, default="gamestop")
-    
-
+   
     # def __str__(self):
     #     return self.title
     def __str__(self):

@@ -102,26 +102,6 @@ class SystemDelete(LoginRequiredMixin, DeleteView):
     model = System
     success_url = '/systems/'
 
-# STORE
-class StoreCreate(LoginRequiredMixin, CreateView):
-    model = Store
-    fields = '__all__'
-    success_url = '/stores/'
-
-class StoreUpdate(LoginRequiredMixin, UpdateView):
-    model = Store
-    fields = '__all__'
-
-@login_required
-def assoc_store(request, game_id, store_id):
-    Game.objects.get(id=game_id).stores.add(store_id)
-    return redirect('game_detail', game_id=game_id)
-
-@login_required
-def unassoc_store(request, game_id, store_id):
-    Game.objects.get(id=game_id).stores.remove(store_id)
-    return redirect('game_detail', game_id=game_id)
-
 # PHOTO
 @login_required
 def add_photo(request, game_id):
