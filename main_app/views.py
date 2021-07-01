@@ -57,7 +57,7 @@ def stores_index(request):
 #GAMES
 class GameCreate(LoginRequiredMixin, CreateView):
     model = Game
-    fields = '__all__'
+    fields = ['title', 'date', 'genre', 'mode']
     success_url = '/games/'
 
 class GameUpdate(LoginRequiredMixin, UpdateView):
@@ -70,9 +70,8 @@ class GameDetail(LoginRequiredMixin, DetailView):
 @login_required
 def game_detail(request, game_id):
     game = Game.objects.get(id=game_id)
-    stores_game_doesnt_have = Store.objects.exclude(id__in=game.stores.all().values_list('id'))
     return render(request, 'game_detail.html', {
-        'game': game, 'stores': stores_game_doesnt_have
+        'game': game
 })
 
 class GameDelete(LoginRequiredMixin, DeleteView):

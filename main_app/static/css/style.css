@@ -1,5 +1,6 @@
 body {
-    background: white url("../images/superMarioBG.png") no-repeat;
+    background: white url("../images/superMBG.jpg");
+    background-size: cover;
 }
 
 nav {
