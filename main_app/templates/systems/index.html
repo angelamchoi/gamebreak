@@ -16,4 +16,19 @@
 </a>
 {% endfor %}
 
+{% for system in systems %}
+    <a href="/games/{{ game.id }}">
+        <div class="card">
+        <div class="card-content">
+            <p>Gaming System: {{ system.platform }}</p>
+            <p>Version: {{ system.date }}</p>
+        </div>
+        <div class="card-action">
+            <a href="{% url 'systems_update' system.id %}">Edit</a>
+            <a href="{% url 'systems_delete' system.id %}">Delete</a>
+        </div>
+    </div>
+</a>
+{% endfor %}
+
 {% endblock %}
