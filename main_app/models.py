@@ -84,7 +84,7 @@ class Game(models.Model):
 
 
     def get_absolute_url(self):        
-        return reverse('games_detail', kwargs={'pk': self.id})
+        return reverse('game_detail', kwargs={'pk': self.id})
 
 # photo model
 class Photo(models.Model):

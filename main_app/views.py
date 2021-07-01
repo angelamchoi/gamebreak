@@ -68,7 +68,7 @@ class GameDetail(LoginRequiredMixin, DetailView):
     model = Game
 
 @login_required
-def games_detail(request, game_id):
+def game_detail(request, game_id):
     game = Game.objects.get(id=game_id)
     stores_game_doesnt_have = Store.objects.exclude(id__in=game.stores.all().values_list('id'))
     return render(request, 'game_detail.html', {
@@ -136,4 +136,5 @@ def add_photo(request, game_id):
             photo.save()
         except:
             print('An error occurred uploading file to S3')
-    return redirect('game_detail', game_id=game_id)
+        return redirect (f"/games/{game_id}")
+
