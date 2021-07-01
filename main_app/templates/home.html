@@ -1,4 +1,39 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>gamebreak</h1>
-{% endblock %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game break</title>
+<!--materialize stylesheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--my stylesheet-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<!--script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+</head>
+<body>
+    <header class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+        <ul>
+            <li><a href="/" class="left brand-logo">&nbsp;&nbsp;gamebreak</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+        </ul>
+        </div>
+        <div class="mario"></div><!--mario-->
+    </nav>
+    </header>
+    <main class="container">
+    {% block content %}
+    {% endblock %}
+    </main>
+</body>
+</html>
