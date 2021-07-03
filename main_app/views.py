@@ -6,6 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
+# import os #<-----environment variables
+# import environ#<-----environment variables
+# enivron.Env()#<-----environment variables
+# environ.Env.read_env()#<-----environment variables
 
 # AWS
 import uuid 
@@ -38,22 +42,16 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-# renders all games without sorting
 @login_required
-def games_index(request):
+def games_index(request):   
+    print("PIZZAAAA!!!!!")
     games = Game.objects.all()
     return render(request, 'games/index.html', { 'games': games })
 
-# tried this one but it doesn't work
-# @login_required
-# def games_index(request, system_id):
-#     print('pizzzaaaa!!!')
-#     # platform = System.objects.get(id=system_id)
-#     games = Game.objects.filter(platform=system_id)
-#     return render(request, 'games/index.html' {'games': games
-#     # # 'platform': platform  
-#     })
-
+def system_platform(request, sp_id):
+    print("NINTENDO 64!!!!!")
+    games = Game.objects.filter(system__id=sp_id)
+    return render(request, 'games/index.html', {'games': games})
 
 
 @login_required
@@ -64,6 +62,7 @@ def systems_index(request):
 #Class Based Views
 #GAMES
 class GameCreate(LoginRequiredMixin, CreateView):
+    print("PIZZAAAA!!!!!")
     model = Game
     fields = ['title', 'date', 'genre', 'mode']
     success_url = '/games/'
@@ -130,5 +129,5 @@ def add_photo(request, game_id):
 #     s3 = boto3.resource('s3')
 #     s3.Object(BUCKET, game_photo.key).delete()
 #     game_photo.delete()
-#     return redirect (f"/games/{game_id}")
+#     return redirect ("/games/")
 

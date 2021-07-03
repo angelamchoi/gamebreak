@@ -6,7 +6,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('accounts/signup/', views.signup, name='signup'),
     path('games/', views.games_index, name='index'),
-    # path('games/<int:system_id>', views.games_index, name='index'),
     path('systems/', views.systems_index, name='index'),
     path('games/create/', views.GameCreate.as_view(), name='games_create'),
     path('systems/create/', views.SystemCreate.as_view(), name='systems_create'),
@@ -21,4 +20,5 @@ urlpatterns = [
 
     path('games/<int:game_id>/add_photo/', views.add_photo, name='add_photo'),
     # path('games/<int:game_id>/delete_photo/', views.delete_photo, name='delete_photo'),
+    path('games/systems/<int:sp_id>/',views.system_platform, name='system_platform'),
 ]
