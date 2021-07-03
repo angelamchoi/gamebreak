@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
+{% block nav %}
+    <li><a href="/systems">View All My Systems</a></li>
+    <li><a href="{% url 'login' %}">Sign Out</a></li>
+{% endblock  %}
 {% block content %}
-
-<h1>Game List
-<button onclick="myFunction()"class="btn-floating btn-large waves-effect waves-light green right"><i class="material-icons">+</i></button> 
-</h1>
-
+<h1>Game List</h1>
+<a href="{% url 'games_create' %}" style= "color: black; font-size: 20px; font-family: 'Press Start 2P', cursive; position: absolute; right: 18%; top: 15%;">
+    <img src="https://raw.githubusercontent.com/LantareCode/random-this-and-thats/master/CSS/SuperMario-Animation/images/Coin.gif" height="40px">
+    add game
+    <img src="https://raw.githubusercontent.com/LantareCode/random-this-and-thats/master/CSS/SuperMario-Animation/images/Coin.gif" height="40px">
+</a>
 {% for game in games %}
     <a href="/games/{{ game.id }}">
         <div class="card">
@@ -16,14 +21,6 @@
         </div>
     </div>
 </a>
-
-<script>
-function myFunction() {
-    location.replace("http://localhost:8000/games/create/")
-}
-
-</script>
-
 {% endfor %}
 {% endblock %}
 

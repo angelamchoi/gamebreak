@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
+{% block nav %}
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'login' %}">Sign Out</a></li>
+{% endblock %}
 {% block content %}
 <h1>System List</h1>
+    <a href="{% url 'systems_create' %}" style= "color: black; font-size: 20px; font-family: 'Press Start 2P', cursive; position: absolute; right: 18%; top: 15%;">
+        <img src="https://raw.githubusercontent.com/LantareCode/random-this-and-thats/master/CSS/SuperMario-Animation/images/Coin.gif" height="40px">
+        add system
+        <img src="https://raw.githubusercontent.com/LantareCode/random-this-and-thats/master/CSS/SuperMario-Animation/images/Coin.gif" height="40px">
+    </a>
 {% for system in systems %}
     <a href="/games/{{ game.id }}">
         <div class="card">
@@ -15,20 +24,4 @@
     </div>
 </a>
 {% endfor %}
-
-{% for system in systems %}
-    <a href="/games/{{ game.id }}">
-        <div class="card">
-        <div class="card-content">
-            <p>Gaming System: {{ system.platform }}</p>
-            <p>Version: {{ system.date }}</p>
-        </div>
-        <div class="card-action">
-            <a href="{% url 'systems_update' system.id %}">Edit</a>
-            <a href="{% url 'systems_delete' system.id %}">Delete</a>
-        </div>
-    </div>
-</a>
-{% endfor %}
-
 {% endblock %}

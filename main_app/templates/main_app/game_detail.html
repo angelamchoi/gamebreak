@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+{%block nav%}
+<li><a href="{% url 'about' %}">About</a></li>
+<li><a href="/systems">View All My Systems</a></li>
+<li><a href="/games">View All My Games</a></li>
+<li><a href="{% url 'login' %}">Log Out</a></li>
+{%endblock%}
+
 {% block content %}
 
 <h1>Game Details</h1>
@@ -30,7 +37,8 @@
         <input type="file" name="photo-file">
         <br><br>
         <input type="submit" class="btn" value="Upload Photo">
+        
     </form>
-</div>
+</div> 
 
-{% endblock %}
+{% endblock %} 
