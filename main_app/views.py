@@ -123,10 +123,4 @@ def add_photo(request, game_id):
             print('An error occurred uploading file to S3')
         return redirect (f"/games/{game_id}")
 
-# def delete_photo(request, game_id):
-#     game_photo = Photo.objects.get(game_id=game_id)
-#     s3 = boto3.resource('s3')
-#     s3.Object(BUCKET, game_photo.key).delete()
-#     game_photo.delete()
-#     return redirect ("game_detail.html")
 

@@ -17,10 +17,8 @@ urlpatterns = [
     path('systems/<int:pk>/update/', views.SystemUpdate.as_view(), name='systems_update'),
     path('systems/<int:pk>/delete/', views.SystemDelete.as_view(), name='systems_delete'),
     path('games/systems/<int:pk>/delete', views.SystemDetail.as_view(), name='systems_detail'),
-    # path('games/systems/<int:pk>/', views.SystemDetail.as_view(), name='systems_detail'), # 
     path('games/systems/', views.games_index, name='index'),
 
     path('games/<int:game_id>/add_photo/', views.add_photo, name='add_photo'),
-    # path('games/<int:game_id>/delete_photo/', views.delete_photo, name='delete_photo'),
     path('games/systems/<int:sp_id>/',views.system_platform, name='system_platform'),
 ]
