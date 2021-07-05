@@ -44,15 +44,13 @@ def about(request):
 
 @login_required
 def games_index(request):   
-    print("PIZZAAAA!!!!!")
     games = Game.objects.all()
     return render(request, 'games/index.html', { 'games': games })
 
+@login_required
 def system_platform(request, sp_id):
-    print("NINTENDO 64!!!!!")
     games = Game.objects.filter(system__id=sp_id)
     return render(request, 'games/index.html', {'games': games})
-
 
 @login_required
 def systems_index(request):
@@ -62,10 +60,12 @@ def systems_index(request):
 #Class Based Views
 #GAMES
 class GameCreate(LoginRequiredMixin, CreateView):
-    print("PIZZAAAA!!!!!")
     model = Game
     fields = ['title', 'date', 'genre', 'mode']
     success_url = '/games/'
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user  
+    #     return super().form_valid(form)
 
 class GameUpdate(LoginRequiredMixin, UpdateView):
     model = Game
@@ -84,7 +84,6 @@ def game_detail(request, game_id):
 class GameDelete(LoginRequiredMixin, DeleteView):
     model = Game
     success_url = '/games/'
-
 
 #SYSTEMS
 class SystemCreate(LoginRequiredMixin, CreateView):
@@ -129,5 +128,5 @@ def add_photo(request, game_id):
 #     s3 = boto3.resource('s3')
 #     s3.Object(BUCKET, game_photo.key).delete()
 #     game_photo.delete()
-#     return redirect ("/games/")
+#     return redirect ("game_detail.html")
 

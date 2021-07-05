@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -32,6 +32,7 @@ PLATFORMS =(
     ('P', 'PlayStation'),
     ('S', 'Steam')
 )
+
 
 # Systems model
 class System(models.Model):
@@ -76,7 +77,7 @@ class Game(models.Model):
             choices=MODES,
             default=MODES[0][0]
     )
-    system = models.ForeignKey(System, default="1", on_delete=models.CASCADE)
+    system = models.ForeignKey(System, on_delete=models.CASCADE, blank=True, null=True)
     # def __str__(self):
     #     return self.title
     def __str__(self):
