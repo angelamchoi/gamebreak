@@ -1,10 +1,17 @@
 # 🎮Gamebreak🕹️
-Gamebreak is a web application that allows you to discover and track your video games. 
+Gamebreak is a web application that allows you to discover and track your video games. This application was created for General Assembly's Software Engineering Immersive (SEI) Program.
 
 This was a group project created by [Angela Choi](https://github.com/angelamchoi) and [Kelsey Rocco](https://github.com/KelseyRocco). 
 
 ## Inspiration
 We wanted to share our love of video games with the world. Video games allowed us to problem solve by experimenting various solutions. It has taught us to take risks, fail, and most importantly to keep going and not give up. We are on a mission to help everyone find their favorite video game. 
+
+## Features
+- Login and Sign up
+- Add/post/edit/delete your systems
+- Add/post/edit/delete your games
+- Mobile responsive
+- Upload photos of your video game
 
 ## Screenshots
 
@@ -14,10 +21,11 @@ We wanted to share our love of video games with the world. Video games allowed u
 - JavaScript
 - Python
 - Django
+- PostgreSQL
 - Materialize CSS
 - Authentication
-- AWS
-- Deployment on Heroku
+- AWS S3 storage
+- Hosted on Heroku
 
 ## Getting Started
 Access the gamebreak web app here.
