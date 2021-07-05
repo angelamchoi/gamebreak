@@ -45,12 +45,12 @@ Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c667
 
 ## Reflection / Difficulties Faced
 ❤️Things we enjoyed:
-1. Incoporating our ideas 
-- If either us of had an idea we ran it by each other and took ownership and did our best to execute it. 
-2. Front-end & Back-end
-- We both took turns working on front-end and back-end
-3. Pair programming 
-- We both learned so much from each other. We would teach other when we solved something differently or added something new.
+- Incoporating our ideas 
+    - If either us of had an idea we ran it by each other and took ownership and did our best to execute it. 
+- Front-end & Back-end
+    - We both took turns working on front-end and back-end
+- Pair programming 
+    - We both learned so much from each other. We would teach other when we solved something differently or added something new.
 
 ⛰️Difficulties Faced: 
 - Centered everything around games rather than systems
@@ -60,23 +60,23 @@ Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c667
 
 📚Lessons Learned:
 
-1. Teamwork makes the dream work
-- Your coding and problem solving skills go further when working together in a team environment
-- Encountered more problems, but also learned how to solve them quicker 
+- Teamwork makes the dream work
+    - Your coding and problem solving skills go further when working together in a team environment
+    - Encountered more problems, but also learned how to solve them quicker 
 
-2. Take more risks
-- At first we were scared to push anything on to our main branch. Later on we realized that we can always retrieve our previous work, so we began to experiment freely. 
+- Take more risks
+    - At first we were scared to push anything on to our main branch. Later on we realized that we can always retrieve our previous work, so we began to experiment freely. 
 
-3. Prioritization
-- We had an endless list of bugs and new features we wanted to implement occuring simultaneously. We decided to reprioritize and not include the store model and focus on games and systems.  .
+- Prioritization
+    - We had an endless list of bugs and new features we wanted to implement occuring simultaneously. We decided to reprioritize and not include the store model and focus on games and systems. 
 
-4. Documenting our technical issues
-- We encountered several technical issues. We began to document our technical issues for future reference and in case one of our teammates encounters it. The following are the technical issues we problem solved. 
+- Documenting our technical issues
+    - We encountered several technical issues. We began to document our technical issues for future reference and in case one of our teammates encounters it. The following are the technical issues we resolved. 
 
-    - Migration issues 
-    - Git conflicts
-    - Integrity error
-    - Working with databases in SQL
+        - Migration issues 
+        - Git conflicts
+        - Integrity error
+        - Working with databases in SQL
 
 
 ## Next Steps
@@ -84,4 +84,4 @@ The following are the next step in improving our application:
 
 - Incorporate games API to discover games by various systems
 - Community section for people to share/borrow games
-- Profile page
+- Profile page for users
