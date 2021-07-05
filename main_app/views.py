@@ -6,10 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView 
-# import os #<-----environment variables
-# import environ#<-----environment variables
-# enivron.Env()#<-----environment variables
-# environ.Env.read_env()#<-----environment variables
 
 # AWS
 import uuid 
@@ -51,6 +47,7 @@ def games_index(request):
 def system_platform(request, sp_id):
     games = Game.objects.filter(system__id=sp_id)
     return render(request, 'games/index.html', {'games': games})
+    # return render (request, 'systems/detail.html', {'games': games})
 
 @login_required
 def systems_index(request):
