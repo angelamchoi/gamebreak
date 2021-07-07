@@ -11,10 +11,22 @@ We wanted to share our love of video games with the world. Video games allowed u
 - Login and Sign up
 - Add/post/edit/delete your systems
 - Add/post/edit/delete your games
-- Mobile responsive
 - Upload/delete photos of your video game
 
 ## Screenshots
+Landing page
+![image](screenshots/home.jpg)
+Create a gaming system
+![image](screenshots/add_system.PNG)
+View all systems
+![image](screenshots/systems.PNG)
+Add a game
+![image](screenshots/add_game.jpg)
+View all games
+![image](screenshots/games_list.PNG)
+Games detail
+![image](screenshots/game_detail.PNG)
+
 
 ## Technologies Used
 - HTML
@@ -30,12 +42,6 @@ We wanted to share our love of video games with the world. Video games allowed u
 
 ## Getting Started
 Access the gamebreak web app [here](https://gamebreakk.herokuapp.com/accounts/login/)
-
-Cloning the repo
-
-run: `python manage.py runserver`
-
-Please make sure to download the following:
 
 ## Planning Process
 
