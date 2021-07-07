@@ -32,10 +32,8 @@ class System(models.Model):
             default=PLATFORMS[0][1]
     )
     date = models.IntegerField('version')
-    # def __str__(self):
-    #     return self.name
     def __str__(self):
-        return f"{self.get_platform_display()}"
+        return f"{self.platform}"
     def get_absolute_url(self):        
         return reverse('systems_detail', kwargs={'pk': self.id})
     class Meta:
@@ -56,9 +54,9 @@ class Game(models.Model):
     )
     system = models.ForeignKey(System, on_delete=models.CASCADE, blank=True, null=True)
     # def __str__(self):
-    #     return self.title
+    #     return f"{self.get_mode_display()}"
     def __str__(self):
-        return f"{self.get_mode_display()}"
+        return self.title
     def get_absolute_url(self):        
         return reverse('game_detail', kwargs={'pk': self.id})
     class Meta:
