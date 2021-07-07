@@ -1,5 +1,6 @@
-# 🎮Gamebreak🕹️
-Gamebreak is a web application that allows you to discover and track your video games. This application was created for General Assembly's Software Engineering Immersive (SEI) Program.
+# 🎮gamebreak🕹️
+## Description
+gamebreak is a web application that allows you to discover and track your video games. This application was created for General Assembly's Software Engineering Immersive (SEI) Program.
 
 This was a group project created by [Angela Choi](https://github.com/angelamchoi) and [Kelsey Rocco](https://github.com/KelseyRocco). 
 
@@ -11,7 +12,7 @@ We wanted to share our love of video games with the world. Video games allowed u
 - Add/post/edit/delete your systems
 - Add/post/edit/delete your games
 - Mobile responsive
-- Upload photos of your video game
+- Upload/delete photos of your video game
 
 ## Screenshots
 
@@ -83,13 +84,13 @@ Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c667
 
         - Migration issues 
         - Git conflicts
-        - Integrity error
+        - Integrity error on Django
         - Working with databases in SQL
-
 
 ## Next Steps
 The following are the next step in improving our application:
 
 - Incorporate games API to discover games by various systems
 - Community section for people to share/borrow games
+- Search by keywords filter
 - Profile page for users

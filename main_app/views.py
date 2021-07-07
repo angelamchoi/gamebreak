@@ -11,7 +11,8 @@ from django.views.generic import DetailView
 import uuid 
 import boto3
 
-from .models import Game, System, Store, Photo
+from .models import Game, System, Photo
+from .forms import GameForm
 
 # Constant variables 
 S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
@@ -47,12 +48,20 @@ def games_index(request):
 def system_platform(request, sp_id):
     games = Game.objects.filter(system__id=sp_id)
     return render(request, 'games/index.html', {'games': games})
-    # return render (request, 'systems/detail.html', {'games': games})
 
 @login_required
 def systems_index(request):
     systems = System.objects.all()
     return render(request, 'systems/index.html', { 'systems': systems })
+
+
+# def add_game(request):
+#     form = GameForm(request.POST)
+#     if form.is_valid():
+#         new_game = form.save(commit=False)
+#         new_game.save()
+#         return redirect('games/systems')
+
 
 #Class Based Views
 #GAMES
@@ -98,7 +107,8 @@ class SystemDetail(LoginRequiredMixin, DetailView):
 @login_required
 def systems_detail(request, system_id):
     system = System.objects.get(id=system_id)
-    return render(request, 'systems/detail.html', { 'system': system })
+    game_form=GameForm()
+    return render(request, 'systems/detail.html', { 'system': system, 'game_form': game_form })
 
 class SystemDelete(LoginRequiredMixin, DeleteView):
     model = System
@@ -114,10 +124,16 @@ def add_photo(request, game_id):
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            photo = Photo(url=url, game_id=game_id)
+            photo = Photo(url=url, key=key, game_id=game_id)
             photo.save()
         except:
             print('An error occurred uploading file to S3')
         return redirect (f"/games/{game_id}")
 
-
+@login_required
+def delete_game_photo(request, game_id):
+    game_photo = Photo.objects.get(game_id=game_id)
+    s3 = boto3.resource('s3')
+    s3.Object(BUCKET, game_photo.key).delete()
+    game_photo.delete()
+    return redirect(f"/games/{game_id}")

@@ -43,25 +43,16 @@ class System(models.Model):
     )
     date = models.IntegerField('version')
 
-    # def __str__(self):
-    #     return self.name
     def __str__(self):
         return f"{self.get_platform_display()}"
 
     def get_absolute_url(self):        
         return reverse('systems_detail', kwargs={'pk': self.id})
+    # def get_absolute_url(self):
+    #     return reverse('systems_detail', kwargs={'systems_id': self.id})
 
     class Meta:
         ordering =['-date']
-
-
-# Store model
-class Store(models.Model):
-    store = models.CharField(max_length =250) 
-    system = models.ForeignKey(System, default='1', on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.store
 
 # Game model
 class Game(models.Model):
@@ -78,8 +69,6 @@ class Game(models.Model):
             default=MODES[0][0]
     )
     system = models.ForeignKey(System, on_delete=models.CASCADE, blank=True, null=True)
-    # def __str__(self):
-    #     return self.title
     def __str__(self):
         return f"{self.get_mode_display()}"
         
@@ -92,6 +81,7 @@ class Game(models.Model):
 # photo model
 class Photo(models.Model):
     url = models.CharField(max_length=200)
+    key = models.CharField(max_length=200, default="Photo!")
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
     def __str__(self):

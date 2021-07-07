@@ -21,5 +21,7 @@ urlpatterns = [
     path('games/systems/', views.games_index, name='index'),
 
     path('games/<int:game_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('games/<int:game_id>/delete_game_photo/', views.delete_game_photo, name='delete_game_photo'),
     path('games/systems/<int:sp_id>/',views.system_platform, name='system_platform'),
+
 ]
