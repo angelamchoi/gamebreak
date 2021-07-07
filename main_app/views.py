@@ -54,24 +54,12 @@ def systems_index(request):
     systems = System.objects.all()
     return render(request, 'systems/index.html', { 'systems': systems })
 
-
-# def add_game(request):
-#     form = GameForm(request.POST)
-#     if form.is_valid():
-#         new_game = form.save(commit=False)
-#         new_game.save()
-#         return redirect('games/systems')
-
-
 #Class Based Views
 #GAMES
 class GameCreate(LoginRequiredMixin, CreateView):
     model = Game
     fields = ['title', 'date', 'genre', 'mode']
     success_url = '/games/'
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user  
-    #     return super().form_valid(form)
 
 class GameUpdate(LoginRequiredMixin, UpdateView):
     model = Game

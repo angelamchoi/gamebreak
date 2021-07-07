@@ -22,6 +22,8 @@ nav {
             animation: play 0.8s steps(4) infinite,
                 run 7s both infinite linear;
 }
+
+
 @-webkit-keyframes play{
     100%{background-position: -284px;}
 }

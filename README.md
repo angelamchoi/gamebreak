@@ -90,6 +90,7 @@ Wireframes can  found [here](https://wireframepro.mockflow.com/view/M26cb0d3c667
 ## Next Steps
 The following are the next step in improving our application:
 
+- View games based on gaming system
 - Incorporate games API to discover games by various systems
 - Community section for people to share/borrow games
 - Search by keywords filter
