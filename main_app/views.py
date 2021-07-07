@@ -18,10 +18,10 @@ from .forms import GameForm
 S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
 BUCKET = 'gamebreak'
 
-import os
+# import os
 
-def some_function(request):
-    my_key = os.environ['SECRET_KEY']
+# def some_function(request):
+#     my_key = os.environ['SECRET_KEY']
 
 # SIGN IN/UP
 def signup(request):
