@@ -29,7 +29,7 @@ We wanted to share our love of video games with the world. Video games allowed u
 - Hosted on Heroku
 
 ## Getting Started
-Access the gamebreak web app here.
+Access the gamebreak web app [here](https://gamebreakk.herokuapp.com/accounts/login/)
 
 Cloning the repo
 

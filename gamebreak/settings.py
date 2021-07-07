@@ -130,5 +130,10 @@ LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
 
+import environ
+environ.Env()
+environ.Env.read_env()
+
 import django_heroku
 django_heroku.settings(locals())
+
