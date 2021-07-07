@@ -8,14 +8,14 @@ PLATFORMS =(
     ('Nintendo64', 'Nintendo64'),
     ('Gameboy', 'GameBoy'),
     ('Wii', 'Wii'),
-    ('Nintendo Switch', 'Nintendo Swtich')
+    ('Nintendo Switch', 'Nintendo Switch')
 )
 GENRES=(
     ('Adventure', 'Adventure'),
     ('Fighting', 'Fighting'),
     ('Indie', 'Indie'),
     ('Racing', 'Racing'),
-    ('Ssport', 'Sport'),
+    ('Sport', 'Sport'),
     ('Tactical', 'Tactical')
 )
 MODES =(
