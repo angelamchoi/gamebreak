@@ -41,7 +41,7 @@ Games detail
 - Hosted on Heroku
 
 ## Getting Started
-Access the gamebreak web app [here](https://gamebreakk.herokuapp.com/accounts/login/)
+Access the gamebreak web app [here](https://gamebreakk.herokuapp.com/)
 
 ## Planning Process
 
